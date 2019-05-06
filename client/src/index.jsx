@@ -12,13 +12,13 @@ class App extends React.Component {
   }
 
   componentDidMount() {
-//AXIOS REQUEST
+    //AXIOS REQUEST
   }
 
   render() {
     return (
       <div>
-        <h1>TITLE</h1>
+        <h1>Changey</h1>
         <List items={this.state.items} />
       </div>
     );

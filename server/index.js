@@ -2,13 +2,13 @@ const express = require('express');
 const bodyParser = require('body-parser');
 var morgan = require('morgan');
 var cors = require('cors');
-const { getCurrencies } = require('./helpers/apiHelpers')
+const { getCurrencies } = require('./helpers/apiHelpers');
 const items = require('../data/mongo');
 
 var app = express();
 
 app.use(morgan('dev'));
-app.use(cors())
+app.use(cors());
 app.use(bodyParser.json());
 app.use(express.static(__dirname + '../client/dist'));
 
@@ -26,4 +26,3 @@ app.get('/currencies', (req, res) => {
     }
   });
 });
-

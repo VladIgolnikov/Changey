@@ -18,7 +18,7 @@ var saveFxSchema = mongoose.Schema({
 
 var saveFx = mongoose.model('SaveFx', saveFxSchema);
 
-var selectAll = (callback) => {
+var selectAll = callback => {
   saveFx.find({}, function(err, items) {
     if (err) {
       callback(err, null);
