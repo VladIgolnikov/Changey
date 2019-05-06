@@ -16,10 +16,10 @@ var saveFxSchema = mongoose.Schema({
   Currency: String
 });
 
-var fx = mongoose.model('SaveFx', saveFxSchema);
+var saveFx = mongoose.model('SaveFx', saveFxSchema);
 
 var selectAll = (callback) => {
-  fx.find({}, function(err, items) {
+  saveFx.find({}, function(err, items) {
     if (err) {
       callback(err, null);
     } else {
