@@ -1,6 +1,6 @@
-var express = require('express');
-var bodyParser = require('body-parser');
-var items = require('../data/mongo');
+const express = require('express');
+const bodyParser = require('body-parser');
+const items = require('../data/mongo');
 
 var app = express();
 
