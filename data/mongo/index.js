@@ -1,25 +1,25 @@
 var mongoose = require('mongoose');
-mongoose.connect('mongodb://localhost/test');
+mongoose.connect('mongodb://localhost/changey');
 
 var db = mongoose.connection;
 
 db.on('error', function() {
-  console.log('mongoose connection error');
+  console.log('Mongoose connection error');
 });
 
 db.once('open', function() {
-  console.log('mongoose connected successfully');
+  console.log('Mongoose connected');
 });
 
-var itemSchema = mongoose.Schema({
-  quantity: Number,
-  description: String
+var saveFxSchema = mongoose.Schema({
+  User: String,
+  Currency: String
 });
 
-var Item = mongoose.model('Item', itemSchema);
+var fx = mongoose.model('SaveFx', saveFxSchema);
 
-var selectAll = function(callback) {
-  Item.find({}, function(err, items) {
+var selectAll = (callback) => {
+  fx.find({}, function(err, items) {
     if (err) {
       callback(err, null);
     } else {
