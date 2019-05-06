@@ -2,7 +2,7 @@ const express = require('express');
 const bodyParser = require('body-parser');
 var morgan = require('morgan');
 var cors = require('cors');
-const { getCurrencies } = require('./helpers/apiHelpers');
+const { getCurrencies, getRates } = require('./helpers/apiHelpers');
 const items = require('../data/mongo');
 
 var app = express();
@@ -23,6 +23,17 @@ app.get('/currencies', (req, res) => {
       res.sendStatus(500);
     } else {
       res.send(results.data.symbols);
+    }
+  });
+});
+
+app.get('/rates', (req, res) => {
+  getRates(req.body.base, req.body.symbols, (err, results) => {
+    if (err) {
+      console.log(`Error retrieving rate --> ${err}`);
+      res.sendStatus(500);
+    } else {
+      res.send(results.data.rates);
     }
   });
 });
