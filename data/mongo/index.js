@@ -20,7 +20,7 @@ var Item = mongoose.model('Item', itemSchema);
 
 var selectAll = function(callback) {
   Item.find({}, function(err, items) {
-    if(err) {
+    if (err) {
       callback(err, null);
     } else {
       callback(null, items);
