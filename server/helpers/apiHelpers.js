@@ -8,19 +8,17 @@ let getCurrencies = cb => {
         access_key: API_KEY
       }
     })
-    .then(response => cb(response))
+    .then(response => cb(null, response))
     .catch(error => cb(error));
 };
 
-let getRates = (base, symbols, cb) => {
+let getRates = (cb) => {
   Axios.get('http://data.fixer.io/api/latest', {
     params: {
       access_key: API_KEY,
-      base: base,
-      symbols: symbols
     }
   })
-  .then(response => cb(response.rates))
+  .then(response => cb(null, response))
   .catch(error => cb(error));
 };
 
