@@ -3,6 +3,12 @@ import ReactDOM from 'react-dom';
 import Axios from 'axios';
 import Saved from './components/Saved.jsx';
 
+
+    // fixer.io API free tier only allows rate search with base EUR.
+    // Convert from other bases by converting price from "from" to EUR,
+    // then multiplying by "to" rate.
+
+    
 class App extends React.Component {
   constructor(props) {
     super(props);
@@ -24,7 +30,6 @@ class App extends React.Component {
     this.handleFromChange = this.handleFromChange.bind(this);
     this.handleToChange = this.handleToChange.bind(this);
     this.handlePriceChange = this.handlePriceChange.bind(this);
-    this.convert = this.convert.bind(this);
   }
 
   componentDidMount() {
@@ -56,7 +61,6 @@ class App extends React.Component {
   fetchSaved() {
     Axios.get('/saved')
       .then(response => {
-        console.log('response from querying the db', response.data);
         this.setState({ saved: response.data });
       })
       .catch(error => {
@@ -65,7 +69,7 @@ class App extends React.Component {
   }
 
   addSave() {
-    Axios.post('/saved', {fx: this.state.to})
+    Axios.put('/saved', {fx: this.state.to})
     .then(response => {
       this.fetchSaved()
     })
@@ -75,7 +79,7 @@ class App extends React.Component {
   }
 
   removeSave(currency) {
-    Axios.delete('/saved', { fx: currency })
+    Axios.post('/saved', { fx: currency })
       .then(response => {
         this.fetchSaved();
       })
@@ -99,22 +103,6 @@ class App extends React.Component {
   handlePriceChange(e) {
     this.setState({
       price: e.target.value
-    });
-  }
-
-  convert() {
-    event.preventDefault();
-    // fixer.io API free tier only allows rate search with base EUR.
-    // Convert from other bases by converting price from "from" to EUR,
-    // then multiplying by "to" rate.
-    let newPrice =
-      (this.state.price / this.state.rates[this.state.from]) *
-      this.state.rates[this.state.to];
-    this.setState({
-      conversion: newPrice.toLocaleString(undefined, {
-        style: 'currency',
-        currency: this.state.to
-      })
     });
   }
 
@@ -153,8 +141,11 @@ class App extends React.Component {
           </select>
         </form>
         <button onClick={this.addSave}>+</button>
-        <button onClick={this.convert}>Go</button>
-        <h2>{this.state.conversion}</h2>
+        <h2>{((this.state.price / this.state.rates[this.state.from]) *
+          this.state.rates[this.state.to]).toLocaleString(undefined, {
+            style: 'currency',
+            currency: this.state.to
+          })}</h2>
         <div>
           <Saved saved={this.state.saved} rates={this.state.rates} price={this.state.price} from={this.state.from} removeSave={this.removeSave}/>
         </div>

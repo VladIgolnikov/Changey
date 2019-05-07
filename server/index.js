@@ -49,8 +49,7 @@ app.get('/saved', (req, res) => {
   });
 });
 
-app.post('/saved', (req, res) => {
-  console.log('req looks like', req);
+app.put('/saved', (req, res) => {
   addSaved(req.body.fx, (err, results) => {
     if (err) {
       console.log(`Error saving currency --> ${err}`);
@@ -62,7 +61,7 @@ app.post('/saved', (req, res) => {
   });
 });
 
-app.delete('/saved', (req, res) => {
+app.post('/saved', (req, res) => {
   deleteSaved(req.body.fx, (err, results) => {
     if (err) {
       console.log(`Error deleting currency --> ${err}`);
