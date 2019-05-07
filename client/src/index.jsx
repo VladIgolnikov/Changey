@@ -1,7 +1,7 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
 import Axios from 'axios';
-//import List from './components/List.jsx';
+import Saved from './components/Saved.jsx';
 
 class App extends React.Component {
   constructor(props) {
@@ -46,6 +46,10 @@ class App extends React.Component {
       .catch(error => {
         console.log(`Error getting rate --> ${error}`);
       });
+  }
+
+  fetchSaved() {
+    Axios.get('/saved')
   }
 
   handleFromChange(e) {
