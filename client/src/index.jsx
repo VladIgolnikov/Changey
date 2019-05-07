@@ -20,7 +20,7 @@ class App extends React.Component {
     this.handleFromChange = this.handleFromChange.bind(this);
     this.handleToChange = this.handleToChange.bind(this);
     this.handlePriceChange = this.handlePriceChange.bind(this);
-    this.refresh = this.refresh.bind(this);
+    this.convert = this.convert.bind(this);
   }
 
   componentDidMount() {
@@ -41,8 +41,7 @@ class App extends React.Component {
   fetchRates() {
     Axios.get('/rates')
       .then(response => {
-        console.log(response);
-        this.setState({ rates: response.data });;
+        this.setState({ rates: response.data });
       })
       .catch(error => {
         console.log(`Error getting rate --> ${error}`);
@@ -67,11 +66,19 @@ class App extends React.Component {
     });
   }
 
-  refresh() {
+  convert() {
     event.preventDefault();
-    let newPrice = this.state.price / this.state.rates[this.state.from] * this.state.rates[this.state.to];
+    // fixer.io API free tier only allows rate search with base EUR.
+    // Convert from other bases by converting price from "from" to EUR,
+    // then multiplying by "to" rate.
+    let newPrice =
+      (this.state.price / this.state.rates[this.state.from]) *
+      this.state.rates[this.state.to];
     this.setState({
-      conversion: newPrice
+      conversion: newPrice.toLocaleString(undefined, {
+        style: 'currency',
+        currency: this.state.to
+      })
     });
   }
 
@@ -109,8 +116,11 @@ class App extends React.Component {
             })}
           </select>
         </form>
-        <button onClick={this.refresh}>Go</button>
+        <button onClick={this.convert}>Go</button>
         <h2>{this.state.conversion}</h2>
+        <div>
+          <Saved />
+        </div>
       </div>
     );
   }
