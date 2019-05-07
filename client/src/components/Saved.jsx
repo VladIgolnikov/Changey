@@ -1,39 +1,25 @@
 import React from 'react';
-import SavedItem from './SavedItem';
-import Axios from 'axios';
 
-class Saved extends React.Component {
-  constructor(props) {
-    super(props);
-    this.state = {
-      saved: ''
-    };
+const Saved = props => {
 
-    this.fetchSaved = this.fetchSaved.bind(this);
-  }
-
-  componentDidMount() {
-    this.fetchSaved();
-  }
-
-  fetchSaved() {
-    Axios.get('/saved')
-      .then(response => {
-        console.log('response for saving to db', response);
-        this.setState({ saved: response });
-      })
-      .catch(error => {
-        console.log(`Error getting list of saved currencies --> ${error}`);
-      });
-  }
-
-  render() {
-    return (
-      <div>
-
+  return (
+    <div>
+      {props.saved.map((currency, index) => {
+        return (
+          <li key={index}>
+            <button onClick={()=>props.removeSave(currency.Currency)}>-</button>
+            <h3>{currency.Currency}</h3>
+            <h3>
+             {((props.price / props.rates[props.from]) * props.rates[currency.Currency]).toLocaleString(undefined, {
+              style: 'currency',
+              currency: currency.Currency
+            })}
+            </h3>
+          </li>
+        );
+      })}
     </div>
-    );
-  }
-}
+  );
+};
 
 export default Saved;

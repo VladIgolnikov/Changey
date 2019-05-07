@@ -11,10 +11,14 @@ class App extends React.Component {
       from: 'EUR',
       to: 'USD',
       price: 1,
-      rates: null,
-      conversion: null
+      rates: [],
+      conversion: null,
+      saved: []
     };
 
+    this.addSave = this.addSave.bind(this);
+    this.removeSave = this.removeSave.bind(this);
+    this.fetchSaved = this.fetchSaved.bind(this);
     this.fetchRates = this.fetchRates.bind(this);
     this.fetchCurrencies = this.fetchCurrencies.bind(this);
     this.handleFromChange = this.handleFromChange.bind(this);
@@ -26,6 +30,7 @@ class App extends React.Component {
   componentDidMount() {
     this.fetchCurrencies();
     this.fetchRates();
+    this.fetchSaved();
   }
 
   fetchCurrencies() {
@@ -50,6 +55,33 @@ class App extends React.Component {
 
   fetchSaved() {
     Axios.get('/saved')
+      .then(response => {
+        console.log('response from querying the db', response.data);
+        this.setState({ saved: response.data });
+      })
+      .catch(error => {
+        console.log(`Error getting list of saved currencies --> ${error}`);
+      });
+  }
+
+  addSave() {
+    Axios.post('/saved', {fx: this.state.to})
+    .then(response => {
+      this.fetchSaved()
+    })
+    .catch(error => {
+      console.log(`Error saving currency --> ${error}`);
+    });
+  }
+
+  removeSave(currency) {
+    Axios.delete('/saved', { fx: currency })
+      .then(response => {
+        this.fetchSaved();
+      })
+      .catch(error => {
+        console.log(`Error deleting saved currency --> ${error}`);
+      });
   }
 
   handleFromChange(e) {
@@ -120,10 +152,11 @@ class App extends React.Component {
             })}
           </select>
         </form>
+        <button onClick={this.addSave}>+</button>
         <button onClick={this.convert}>Go</button>
         <h2>{this.state.conversion}</h2>
         <div>
-          <Saved />
+          <Saved saved={this.state.saved} rates={this.state.rates} price={this.state.price} from={this.state.from} removeSave={this.removeSave}/>
         </div>
       </div>
     );

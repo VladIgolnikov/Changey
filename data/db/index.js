@@ -31,11 +31,11 @@ var addSaved = (fx, callback) => {
 };
 
 var getSaved = callback => {
-  SaveFx.find({ User: 1 }, 'Currency', (err, items) => {
+  SaveFx.find({ User: 1 }, 'Currency -_id', (err, items) => {
     if (err) {
       callback(err, null);
     } else {
-      callback(null, items);
+      callback(null, (items));
     }
   });
 };

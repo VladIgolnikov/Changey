@@ -44,13 +44,13 @@ app.get('/saved', (req, res) => {
       console.log(`Error getting saved currencies --> ${err}`);
       res.sendStatus(500);
     } else {
-      console.log(`Got all saved --> ${results}`);
-      res.send(results);
+      res.send(Object.values(results));
     }
   });
 });
 
 app.post('/saved', (req, res) => {
+  console.log('req looks like', req);
   addSaved(req.body.fx, (err, results) => {
     if (err) {
       console.log(`Error saving currency --> ${err}`);
