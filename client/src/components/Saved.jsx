@@ -3,7 +3,7 @@ import React from 'react';
 const Saved = props => {
   return (
     <div>
-      <ul style="list-style: none;">
+      <ul>
         {props.saved.map((currency, index) => {
           return (
             <li key={index}>

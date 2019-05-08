@@ -29,3 +29,7 @@ input[type=price] {
   margin: 8px 0;
   box-sizing: border-box;
 }
+
+ul {
+  list-style: none;
+}
