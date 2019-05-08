@@ -1,6 +1,7 @@
-html, body {
+html,
+body {
   background-image: linear-gradient(rgb(220, 243, 242), rgb(122, 223, 214));
-  font-family: "Lato", "Robato", Arial, Helvetica, sans-serif;
+  font-family: 'Lato', 'Robato', Arial, Helvetica, sans-serif;
   font-weight: 200;
   color: rgb(42, 46, 46);
   height: 100%;
@@ -8,12 +9,14 @@ html, body {
 }
 
 h1 {
-  font-family: "Lobster Two", cursive;
+  font-family: 'Lobster Two', cursive;
   font-style: italic;
   font-size: 80px;
 }
 
-h2, h3, h4 {
+h2,
+h3,
+h4 {
   font-weight: 200;
 }
 
@@ -23,27 +26,27 @@ h2, h3, h4 {
   justify-content: center;
 }
 
-input[type=price] {
+input[type='price'] {
   background-color: rgba(220, 243, 242, 0);
   padding: 12px 20px;
   margin: 8px 0;
   box-sizing: border-box;
   border: none;
   border-bottom: 1px solid rgb(42, 46, 46);
-  font-family: "Lato", "Robato", Arial, Helvetica, sans-serif;
+  font-family: 'Lato', 'Robato', Arial, Helvetica, sans-serif;
   font-weight: 200;
   color: rgb(42, 46, 46);
   font-size: 40px;
-  width: 65%
+  width: 65%;
 }
 
-input[type=price]:focus {
+input[type='price']:focus {
   background-color: rgba(220, 243, 242, 0);
   padding: 12px 20px;
   margin: 8px 0;
   box-sizing: border-box;
   outline: 1px solid rgb(222, 248, 248);
-  font-family: "Lato", "Robato", Arial, Helvetica, sans-serif;
+  font-family: 'Lato', 'Robato', Arial, Helvetica, sans-serif;
   font-weight: 200;
   color: rgb(42, 46, 46);
   font-size: 40px;
@@ -51,4 +54,13 @@ input[type=price]:focus {
 
 ul {
   list-style: none;
+}
+
+select {
+  font-family: 'Lato', 'Robato', Arial, Helvetica, sans-serif;
+  line-height: 1;
+  border-radius: 1px;
+  background-color: rgba(220, 243, 242, 0);
+  color: rgb(42, 46, 46);
+  font-size: 20px;
 }
