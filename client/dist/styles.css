@@ -34,6 +34,19 @@ input[type=price] {
   font-weight: 200;
   color: rgb(42, 46, 46);
   font-size: 40px;
+  width: 25%
+}
+
+input:focus {
+  background-color: rgba(220, 243, 242, 0);
+  padding: 12px 20px;
+  margin: 8px 0;
+  box-sizing: border-box;
+  border: 1px solid rgb(42, 46, 46);
+  font-family: "Lato", "Robato", Arial, Helvetica, sans-serif;
+  font-weight: 200;
+  color: rgb(42, 46, 46);
+  font-size: 40px;
 }
 
 ul {
