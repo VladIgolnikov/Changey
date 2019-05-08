@@ -139,7 +139,7 @@ class App extends React.Component {
           </select>
         </form>
         <button onClick={this.addSave}>+</button>
-        <h2>
+        <h2 className="price">
           {(
             (this.state.price / this.state.rates[this.state.from]) *
             this.state.rates[this.state.to]
