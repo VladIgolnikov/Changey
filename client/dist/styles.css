@@ -23,6 +23,7 @@ h4 {
 
 .price {
   font-size: 50px;
+  text-align: center;
 }
 
 #app {
@@ -40,7 +41,7 @@ input[type='price'] {
   border-bottom: 1px solid rgb(42, 46, 46);
   font-family: 'Lato', 'Robato', Arial, Helvetica, sans-serif;
   font-weight: 200;
-  align-items: center;
+  text-align: center;
   justify-content: center;
   color: rgb(42, 46, 46);
   font-size: 40px;
