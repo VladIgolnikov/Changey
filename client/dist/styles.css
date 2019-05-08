@@ -20,6 +20,10 @@ h4 {
   font-weight: 200;
 }
 
+.price {
+  font-size: 50px;
+}
+
 #app {
   display: flex;
   align-items: center;
@@ -47,6 +51,7 @@ input[type='price']:focus {
   padding: 12px 20px;
   margin: 8px 0;
   box-sizing: border-box;
+  border-bottom: none;
   outline: 1px solid rgb(42, 46, 46);
   font-family: 'Lato', 'Robato', Arial, Helvetica, sans-serif;
   font-weight: 200;
