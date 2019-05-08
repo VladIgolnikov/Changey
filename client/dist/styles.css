@@ -70,3 +70,14 @@ select {
 select:after {
   outline: 1px solid rgb(222, 248, 248);
 }
+
+button {
+  font-family: 'Lato', 'Robato', Arial, Helvetica, sans-serif;
+  font-weight: 200;
+  border-radius: 1px;
+  background-color: rgba(220, 243, 242, 0.5);
+}
+
+button:hover {
+  background-color: rgba(220, 243, 242, 1);
+}
