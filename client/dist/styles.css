@@ -60,7 +60,7 @@ ul {
 
 li {
   display: inline-block;
-  padding: 10 px;
+  margin: 20 px;
 }
 
 select {
