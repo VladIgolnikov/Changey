@@ -3,12 +3,10 @@ import ReactDOM from 'react-dom';
 import Axios from 'axios';
 import Saved from './components/Saved.jsx';
 
+// fixer.io API free tier only allows rate search with base EUR.
+// Convert from other bases by converting price from "from" to EUR,
+// then multiplying by "to" rate.
 
-    // fixer.io API free tier only allows rate search with base EUR.
-    // Convert from other bases by converting price from "from" to EUR,
-    // then multiplying by "to" rate.
-
-    
 class App extends React.Component {
   constructor(props) {
     super(props);
@@ -69,13 +67,13 @@ class App extends React.Component {
   }
 
   addSave() {
-    Axios.put('/saved', {fx: this.state.to})
-    .then(response => {
-      this.fetchSaved()
-    })
-    .catch(error => {
-      console.log(`Error saving currency --> ${error}`);
-    });
+    Axios.put('/saved', { fx: this.state.to })
+      .then(response => {
+        this.fetchSaved();
+      })
+      .catch(error => {
+        console.log(`Error saving currency --> ${error}`);
+      });
   }
 
   removeSave(currency) {
@@ -112,7 +110,7 @@ class App extends React.Component {
         <h1>Changey</h1>
         <form>
           <label>
-            Price:
+            <h2>Price:</h2>
             <input
               type='price'
               name='price'
@@ -141,13 +139,23 @@ class App extends React.Component {
           </select>
         </form>
         <button onClick={this.addSave}>+</button>
-        <h2>{((this.state.price / this.state.rates[this.state.from]) *
-          this.state.rates[this.state.to]).toLocaleString(undefined, {
+        <h2>
+          {(
+            (this.state.price / this.state.rates[this.state.from]) *
+            this.state.rates[this.state.to]
+          ).toLocaleString(undefined, {
             style: 'currency',
             currency: this.state.to
-          })}</h2>
+          })}
+        </h2>
         <div>
-          <Saved saved={this.state.saved} rates={this.state.rates} price={this.state.price} from={this.state.from} removeSave={this.removeSave}/>
+          <Saved
+            saved={this.state.saved}
+            rates={this.state.rates}
+            price={this.state.price}
+            from={this.state.from}
+            removeSave={this.removeSave}
+          />
         </div>
       </div>
     );

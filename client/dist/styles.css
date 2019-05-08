@@ -22,3 +22,10 @@ h2, h3, h4 {
   align-items: center;
   justify-content: center;
 }
+
+input[type=price] {
+  background-color: rgba(220, 243, 242, 0);
+  padding: 12px 20px;
+  margin: 8px 0;
+  box-sizing: border-box;
+}
