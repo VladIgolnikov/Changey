@@ -14,7 +14,7 @@ class App extends React.Component {
       currencies: [],
       from: 'EUR',
       to: 'USD',
-      price: 1,
+      price: 0,
       rates: [],
       conversion: null,
       saved: []
