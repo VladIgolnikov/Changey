@@ -23,7 +23,7 @@ h2, h3, h4 {
   justify-content: center;
 }
 
-input[type=price] {
+input {
   background-color: rgba(220, 243, 242, 0);
   padding: 12px 20px;
   margin: 8px 0;
@@ -34,10 +34,10 @@ input[type=price] {
   font-weight: 200;
   color: rgb(42, 46, 46);
   font-size: 40px;
-  width: 75%
+  width: 65%
 }
 
-input[type=price]:focus {
+input:focus {
   background-color: rgba(220, 243, 242, 0);
   padding: 12px 20px;
   margin: 8px 0;

@@ -114,6 +114,7 @@ class App extends React.Component {
             <input
               type='price'
               name='price'
+              autocomplete="off"
               onChange={this.handlePriceChange}
             />
           </label>
