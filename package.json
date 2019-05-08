@@ -7,7 +7,7 @@
     "test": "echo \"Error: no test specified\" && exit 1",
     "react-d": "webpack -d --watch",
     "react-p": "webpack -p --watch",
-    "start": "nodemon server/index.js"
+    "start": "node server/index.js"
   },
   "author": "",
   "license": "ISC",
