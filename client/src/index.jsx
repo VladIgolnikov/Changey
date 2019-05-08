@@ -108,13 +108,12 @@ class App extends React.Component {
     return (
       <div>
         <h1>Changey</h1>
-        <form>
+        <form autocomplete='off'>
           <label>
             <h2>Price:</h2>
             <input
               type='price'
               name='price'
-              autocomplete="off"
               onChange={this.handlePriceChange}
             />
           </label>

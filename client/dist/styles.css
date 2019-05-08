@@ -23,7 +23,7 @@ h2, h3, h4 {
   justify-content: center;
 }
 
-input {
+input[type=price] {
   background-color: rgba(220, 243, 242, 0);
   padding: 12px 20px;
   margin: 8px 0;
@@ -37,12 +37,12 @@ input {
   width: 65%
 }
 
-input:focus {
+input[type=price]:focus {
   background-color: rgba(220, 243, 242, 0);
   padding: 12px 20px;
   margin: 8px 0;
   box-sizing: border-box;
-  border: 1px solid rgb(42, 46, 46);
+  outline: 1px solid rgb(222, 248, 248);
   font-family: "Lato", "Robato", Arial, Helvetica, sans-serif;
   font-weight: 200;
   color: rgb(42, 46, 46);
