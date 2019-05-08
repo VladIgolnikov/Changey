@@ -27,7 +27,6 @@ h4 {
 }
 
 input[type='price'] {
-  display: inline-block;
   background-color: rgba(220, 243, 242, 0);
   padding: 12px 20px;
   margin: 8px 0;
@@ -36,6 +35,8 @@ input[type='price'] {
   border-bottom: 1px solid rgb(42, 46, 46);
   font-family: 'Lato', 'Robato', Arial, Helvetica, sans-serif;
   font-weight: 200;
+  align-items: center;
+  justify-content: center;
   color: rgb(42, 46, 46);
   font-size: 40px;
   width: 65%;
@@ -55,10 +56,11 @@ input[type='price']:focus {
 
 ul {
   list-style: none;
-  display: inline-block;
+  display: inline;
 }
 
 select {
+  display: flex;
   font-family: 'Lato', 'Robato', Arial, Helvetica, sans-serif;
   font-weight: 200;
   line-height: 1;
@@ -66,7 +68,7 @@ select {
   background-color: rgba(220, 243, 242, 0);
   color: rgb(42, 46, 46);
   font-size: 20px;
-  width: 65%;
+  width: 65%
 }
 
 select:after {
@@ -74,7 +76,7 @@ select:after {
 }
 
 button {
-  display: inline-block;
+  display: inline;
   font-family: 'Lato', 'Robato', Arial, Helvetica, sans-serif;
   font-weight: 200;
   border: none;
