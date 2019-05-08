@@ -37,7 +37,7 @@ input[type=price] {
   width: 75%
 }
 
-input:focus {
+input[type=price]:focus {
   background-color: rgba(220, 243, 242, 0);
   padding: 12px 20px;
   margin: 8px 0;
